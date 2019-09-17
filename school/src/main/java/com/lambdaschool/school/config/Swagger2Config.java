@@ -13,22 +13,25 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class Swagger2Config {
+public class Swagger2Config
+{
     @Bean
-    public Docket api(){
+    public Docket api()
+    {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("com.lambdaschool.schools"))
+                        .basePackage("com.lambdaschool.school"))
                 .paths(PathSelectors.regex("/.*"))
-                .build() .apiInfo(apiEndPointsInfo());
+                .build().apiInfo(apiEndPointsInfo());
     }
 
-    private ApiInfo apiEndPointsInfo(){
+    private ApiInfo apiEndPointsInfo()
+    {
         return new ApiInfoBuilder().title("School Example")
                 .description("School Example")
-                .contact(new Contact("Ben Lopez", "insert url here", "insert email here"))
-                .license("MIT").licenseUrl("")
+                .contact(new Contact("John Mitchell", "http://www.lambdaschool.com", "john@lambdaschool.com"))
+                .license("MIT").licenseUrl("https://github.com/LambdaSchool/java-crudysnacks/blob/master/LICENSE")
                 .version("1.0.0").build();
     }
 }
