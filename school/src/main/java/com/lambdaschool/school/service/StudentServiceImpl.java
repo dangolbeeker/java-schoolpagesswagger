@@ -6,6 +6,7 @@ import com.lambdaschool.school.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -18,10 +19,10 @@ public class StudentServiceImpl implements StudentService
     private StudentRepository studrepos;
 
     @Override
-    public List<Student> findAll()
+    public List<Student> findAll(Pageable pageable)
     {
         List<Student> list = new ArrayList<>();
-        studrepos.findAll().iterator().forEachRemaining(list::add);
+        studrepos.findAll(pageable).iterator().forEachRemaining(list::add);
         return list;
     }
 
@@ -33,13 +34,12 @@ public class StudentServiceImpl implements StudentService
     }
 
     @Override
-    public List<Student> findStudentByNameLike(String name)
+    public List<Student> findStudentByNameLike(String name, Pageable pageable)
     {
         List<Student> list = new ArrayList<>();
-        studrepos.findByStudnameContainingIgnoreCase(name).iterator().forEachRemaining(list::add);
+        studrepos.findByStudnameContainingIgnoreCase(name, pageable).iterator().forEachRemaining(list::add);
         return list;
     }
-
     @Override
     public void delete(long id) throws EntityNotFoundException
     {
