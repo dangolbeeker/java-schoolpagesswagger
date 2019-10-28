@@ -1,6 +1,6 @@
 package com.lambdaschool.school.service;
 
-import com.lambdaschool.school.model.Course;
+
 import com.lambdaschool.school.model.Student;
 import com.lambdaschool.school.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

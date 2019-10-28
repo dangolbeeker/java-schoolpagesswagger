@@ -1,5 +1,7 @@
 package com.lambdaschool.school.model;
 
+
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -19,8 +21,8 @@ public class Student
 
     @ManyToMany
     @JoinTable(name = "studcourses",
-               joinColumns = {@JoinColumn(name = "studid")},
-               inverseJoinColumns = {@JoinColumn(name = "courseid")})
+            joinColumns = {@JoinColumn(name = "studid")},
+            inverseJoinColumns = {@JoinColumn(name = "courseid")})
     @JsonIgnoreProperties("students")
     private List<Course> courses = new ArrayList<>();
 
